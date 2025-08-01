@@ -1,0 +1,47 @@
+<!-- calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; margin: 5px; }
+    .result { font-size: 24px; color: #2c3e50; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<h2>🧮 Simple Calculator</h2>
+
+<input type="number" id="num1" placeholder="First number" />
+<input type="number" id="num2" placeholder="Second number" />
+
+<button onclick="add()">Add (+)</button>
+<button onclick="subtract()">Subtract (-)</button>
+<button onclick="multiply()">Multiply (×)</button>
+<button onclick="divide()">Divide (÷)</button>
+
+<div class="result" id="result">Result: ?</div>
+
+<script>
+  function getVal(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+  }
+
+  function updateResult(text) {
+    document.getElementById('result').textContent = `Result: ${text}`;
+  }
+
+  function add() { updateResult(getVal("num1") + getVal("num2")); }
+  function subtract() { updateResult(getVal("num1") - getVal("num2")); }
+  function multiply() { updateResult(getVal("num1") * getVal("num2")); }
+  function divide() {
+    const n1 = getVal("num1");
+    const n2 = getVal("num2");
+    if (n2 === 0) updateResult("Error: Can't divide by zero!");
+    else updateResult(n1 / n2);
+  }
+</script>
+
+</body>
